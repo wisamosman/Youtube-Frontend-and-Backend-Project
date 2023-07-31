@@ -7,6 +7,7 @@ class SomeModelAdmin(SummernoteModelAdmin):
     summernote_fields = '__all__'
 
 
+
 admin.site.register(Video,SomeModelAdmin)
 admin.site.register(Author)
 admin.site.register(Review)

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render ,redirect
 from .models import Video
 from .forms import VideoForm
 
@@ -24,11 +24,12 @@ def new_post(request):
         form = VideoForm(request.POST,request.FILES)
         if form.is_valid():
             form.save()
+            return redirect('/viedeos/')
         
         else:
             form = VideoForm()
     
-    return render(request,'viedeos/post.html',{'form':form})
+    return render(request,'viedeos/post.html',{})
 
 
 def edit_post(request,post_id):
@@ -37,9 +38,10 @@ def edit_post(request,post_id):
         form = VideoForm(request.POST,request.FILES,instance=data)
         if form.is_valid():
             form.save()
+            return redirect('/viedeos/')
         
         else:
             form = VideoForm(instance=data)
 
     
-    return render(request,'viedeos/edit.html',{'form':form})
+    return render(request,'viedeos/edit.html',{'post':data})

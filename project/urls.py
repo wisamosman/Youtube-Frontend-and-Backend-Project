@@ -24,7 +24,10 @@ from viedeos.views import post_list , post_detail , new_post , edit_post
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
-    path()
+    path('viedeos/' , post_list),
+    path('viedeos/new' , new_post),
+    path('viedeos/<int:post_id>' , post_detail),
+    path('viedeos/<int:post_id>/edit' , edit_post),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
