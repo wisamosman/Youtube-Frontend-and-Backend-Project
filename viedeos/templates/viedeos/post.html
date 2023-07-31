@@ -1,0 +1,7 @@
+<h1>blog</h1>
+<a href="/viedeos/new">add new post</a>
+
+{% for post in viedeos  %}
+    <h3><a href="/viedeos/{{post.id}}">{{post}}</a></h3>
+
+{% endfor %}
