@@ -6,7 +6,7 @@ from .forms import VideoForm
 
 def post_list(request):
     data = Video.objects.all
-    return render(request,'viedeos/post.html',{'post':data})
+    return render(request,'viedeos/post.html',{'posts':data})
 
 
 
@@ -20,8 +20,8 @@ def post_detail(request,post_id):
 # Create your views here.
 
 def new_post(request):
-    if request.method == 'POST':
-        form = VideoForm(request.POST,request.FILES)
+    if request.method == 'VIDEO':
+        form = VideoForm(request.VIDEO,request.FILES)
         if form.is_valid():
             form.save()
             return redirect('/viedeos/')
@@ -29,7 +29,7 @@ def new_post(request):
         else:
             form = VideoForm()
     
-    return render(request,'viedeos/post.html',{})
+    return render(request,'viedeos/new.html',{'form':form})
 
 
 def edit_post(request,post_id):
