@@ -1,12 +1,36 @@
 from django.shortcuts import render ,redirect
 from .models import Video
 from .forms import VideoForm
-
+from django.views import generic
 
 
 def post_list(request):
     data = Video.objects.all
     return render(request,'viedeos/post.html',{'posts':data})
+
+
+
+class PostList(generic.ListView):
+    model = Video
+
+
+
+class PostDetail(generic.DetailView):
+    model = Video
+
+
+class PostCreate(generic.CreateView):
+    model = Video
+    fields = ['name','title','views','author','description','dislikes','tags','video']
+    success_url = '/viedeos/'
+
+
+class PostEdit(generic.UpdateView):
+    model = Video
+    fields = ['name','title','views','author','description','dislikes','tags','video']
+    success_url = '/viedeos/'
+    template_name = 'viedeos/edit.html'
+
 
 
 
@@ -17,11 +41,12 @@ def post_detail(request,post_id):
 
 
 
-# Create your views here.
+# Create your views here
 
 def new_post(request):
-    if request.method == 'VIDEO':
-        form = VideoForm(request.VIDEO,request.FILES)
+    form = VideoForm()
+    if request.method == 'POST':
+        form = VideoForm(request.POST,request.FILES)
         if form.is_valid():
             form.save()
             return redirect('/viedeos/')
@@ -44,4 +69,4 @@ def edit_post(request,post_id):
             form = VideoForm(instance=data)
 
     
-    return render(request,'viedeos/edit.html',{'post':data})
+    return render(request,'viedeos/edit.html',{})

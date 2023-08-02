@@ -19,15 +19,19 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import include
-from viedeos.views import post_list , post_detail , new_post , edit_post 
+from viedeos.views import post_list , post_detail , new_post , edit_post , PostList , PostDetail , PostCreate , PostEdit
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
-    path('viedeos/' , post_list),
-    path('viedeos/new' , new_post),
-    path('viedeos/<int:post_id>' , post_detail),
-    path('viedeos/<int:post_id>/edit' , edit_post),
+    #path('viedeos/' , post_list),
+    path('viedeos/' , PostList.as_view()),
+    #path('viedeos/new' , new_post),
+    path('viedeos/new' , PostCreate.as_view()),
+    #path('viedeos/<int:post_id>' , post_detail),
+    path('viedeos/<int:pk>' , PostDetail.as_view()),
+    #path('viedeos/<int:post_id>/edit' , edit_post),
+    path('viedeos/<int:pk>/edit' , PostEdit.as_view()),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
