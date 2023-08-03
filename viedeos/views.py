@@ -15,7 +15,7 @@ class PostList(generic.ListView):
 
 
 
-class PostDetail(generic.DetailView):
+class VideoDetail(generic.DetailView):
     model = Video
 
 
@@ -31,6 +31,11 @@ class PostEdit(generic.UpdateView):
     success_url = '/viedeos/'
     template_name = 'viedeos/edit.html'
 
+
+
+class PostDelete(generic.DeleteView):
+    model = Video
+    success_url = '/viedeos/'
 
 
 
@@ -70,3 +75,6 @@ def edit_post(request,post_id):
 
     
     return render(request,'viedeos/edit.html',{})
+
+
+

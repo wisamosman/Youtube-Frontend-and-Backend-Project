@@ -19,7 +19,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import include
-from viedeos.views import post_list , post_detail , new_post , edit_post , PostList , PostDetail , PostCreate , PostEdit
+from viedeos.views import post_list , post_detail , new_post , edit_post , PostList , VideoDetail , PostCreate , PostEdit , PostDelete
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,9 +29,10 @@ urlpatterns = [
     #path('viedeos/new' , new_post),
     path('viedeos/new' , PostCreate.as_view()),
     #path('viedeos/<int:post_id>' , post_detail),
-    path('viedeos/<int:pk>' , PostDetail.as_view()),
+    path('viedeos/<int:pk>' , VideoDetail.as_view()),
     #path('viedeos/<int:post_id>/edit' , edit_post),
     path('viedeos/<int:pk>/edit' , PostEdit.as_view()),
+    path('viedeos/<int:pk>/delete' , PostDelete.as_view()),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
