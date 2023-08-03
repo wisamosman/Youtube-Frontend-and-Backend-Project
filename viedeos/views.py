@@ -19,13 +19,13 @@ class VideoDetail(generic.DetailView):
     model = Video
 
 
-class PostCreate(generic.CreateView):
+class VideoCreate(generic.CreateView):
     model = Video
     fields = ['name','title','views','author','description','dislikes','tags','video']
     success_url = '/viedeos/'
 
 
-class PostEdit(generic.UpdateView):
+class VideoEdit(generic.UpdateView):
     model = Video
     fields = ['name','title','views','author','description','dislikes','tags','video']
     success_url = '/viedeos/'
@@ -33,7 +33,7 @@ class PostEdit(generic.UpdateView):
 
 
 
-class PostDelete(generic.DeleteView):
+class VideoDelete(generic.DeleteView):
     model = Video
     success_url = '/viedeos/'
 
