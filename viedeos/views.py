@@ -4,9 +4,6 @@ from .forms import VideoForm
 from django.views import generic
 
 
-def post_list(request):
-    data = Video.objects.all
-    return render(request,'viedeos/post.html',{'posts':data})
 
 
 
@@ -37,6 +34,11 @@ class VideoDelete(generic.DeleteView):
     model = Video
     success_url = '/viedeos/'
 
+
+
+def post_list(request):
+    data = Video.objects.all
+    return render(request,'viedeos/post.html',{'posts':data})
 
 
 
