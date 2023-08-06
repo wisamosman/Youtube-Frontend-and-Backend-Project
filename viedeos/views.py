@@ -7,7 +7,7 @@ from django.views import generic
 
 
 
-class PostList(generic.ListView):
+class VideoList(generic.ListView):
     model = Video
 
 
@@ -38,20 +38,20 @@ class VideoDelete(generic.DeleteView):
 
 def post_list(request):
     data = Video.objects.all
-    return render(request,'viedeos/post.html',{'posts':data})
+    return render(request,'viedeos/post.html',{'videos':data})
 
 
 
-def post_detail(request,post_id):
-    data = Video.objects.get(id=post_id)
-    return render(request,'viedeos/detail.html',{'post':data})
+def post_detail(request,video_id):
+    data = Video.objects.get(id=video_id)
+    return render(request,'viedeos/detail.html',{'video':data})
 
 
 
 # Create your views here
 
 def new_post(request):
-    form = VideoForm()
+    #form = VideoForm()
     if request.method == 'POST':
         form = VideoForm(request.POST,request.FILES)
         if form.is_valid():
@@ -64,8 +64,8 @@ def new_post(request):
     return render(request,'viedeos/new.html',{'form':form})
 
 
-def edit_post(request,post_id):
-    data = Video.objects.get(id=post_id)
+def edit_post(request,video_id):
+    data = Video.objects.get(id=video_id)
     if request.method == 'POST':
         form = VideoForm(request.POST,request.FILES,instance=data)
         if form.is_valid():

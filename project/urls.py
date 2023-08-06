@@ -19,16 +19,16 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import include
-from viedeos.views import post_list , post_detail , new_post , edit_post , PostList , VideoDetail , VideoCreate , VideoDelete , VideoEdit
+from viedeos.views import post_list , post_detail , new_post , edit_post , VideoList , VideoDetail , VideoCreate , VideoDelete , VideoEdit
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('summernote/', include('django_summernote.urls')),
+    #path('admin/', admin.site.urls),
+    #path('summernote/', include('django_summernote.urls')),
     #path('viedeos/' , post_list),
     #path('viedeos/new' , new_post),
-    #path('viedeos/<int:post_id>' , post_detail),
-    #path('viedeos/<int:post_id>/edit' , edit_post),
-    path('viedeos/' , PostList.as_view()),
+    #path('viedeos/<int:video_id>' , post_detail),
+    #path('viedeos/<int:video_id>/edit' , edit_post),
+    path('viedeos/' , VideoList.as_view()),
     path('viedeos/new' , VideoCreate.as_view()),
     path('viedeos/<int:pk>' , VideoDetail.as_view()),
     path('viedeos/<int:pk>/edit' , VideoEdit.as_view()),
