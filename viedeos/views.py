@@ -18,7 +18,7 @@ class VideoDetail(generic.DetailView):
 
 class VideoCreate(generic.CreateView):
     model = Video
-    fields = ['name','title','views','author','description','dislikes','tags','video']
+    fields = ['name','title','views','author','description','dislikes','tags','video','image']
     success_url = '/viedeos/'
 
 

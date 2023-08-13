@@ -18,12 +18,14 @@ class Video(models.Model):
     name = models.CharField(max_length=120)
     title = models.CharField(max_length=100)
     views = models.IntegerField(default=0)
+    image = models.ImageField(upload_to='viedeos')
     author = models.ForeignKey(Author,related_name='video_author',on_delete=models.CASCADE)
     description = models.TextField(max_length=30000)
     likes = models.ManyToManyField(User, related_name='video_like')
     dislikes = models.ManyToManyField(User,related_name='video_dislikes')
     tags = TaggableManager()
     video = models.URLField(blank=True , null=True)
+    
 
     def __str__(self):
         return self.name
