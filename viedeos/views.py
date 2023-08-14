@@ -58,7 +58,7 @@ def new_post(request):
             form.save()
             return redirect('/viedeos/')
         
-        else:
+    else:
             form = VideoForm()
     
     return render(request,'viedeos/new.html',{'form':form})
@@ -72,7 +72,7 @@ def edit_post(request,video_id):
             form.save()
             return redirect('/viedeos/')
         
-        else:
+    else:
             form = VideoForm(instance=data)
 
     

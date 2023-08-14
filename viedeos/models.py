@@ -24,7 +24,7 @@ class Video(models.Model):
     likes = models.ManyToManyField(User, related_name='video_like')
     dislikes = models.ManyToManyField(User,related_name='video_dislikes')
     tags = TaggableManager()
-    video = models.URLField(blank=True , null=True)
+    video = models.CharField(max_length=200 , blank=True , null=True)
     
 
     def __str__(self):
